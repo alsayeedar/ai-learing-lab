@@ -18903,6 +18903,13 @@ function generateBigDataReflection() {
 
 
     function openAlwaysAvailableStudentTools() {
+      const teacherView = document.getElementById("teacherView");
+      const teacherActive = teacherView && !teacherView.classList.contains("hidden");
+      if (teacherActive) {
+        openAlwaysAvailableTeacherTools();
+        return;
+      }
+
       const toolIndex = modules.findIndex(module => module.id === "required-ai-practice-tools");
       if (toolIndex < 0) return;
 
@@ -18915,6 +18922,40 @@ function generateBigDataReflection() {
 
       document.getElementById("certificatePanel").classList.add("hidden");
       renderActiveModule();
+    }
+
+    function openAlwaysAvailableTeacherTools() {
+      const toolModule = modules.find(module => module.id === "required-ai-practice-tools");
+      const panel = document.getElementById("teacherModulePanel");
+      if (!toolModule || !panel) return;
+
+      // Opened as a standalone tool, not a numbered teacher module.
+      activeTeacherModuleIndex = null;
+      studentAiAssessState = { level: null, allowed: false, responsibility: false };
+
+      // Clear the student module panel so its (hidden) copy of the tool cannot
+      // win getElementById lookups against the teacher copy's shared IDs.
+      const studentPanel = document.getElementById("modulePanel");
+      if (studentPanel) {
+        studentPanel.classList.add("hidden");
+        studentPanel.innerHTML = "";
+      }
+
+      panel.classList.remove("hidden");
+      panel.innerHTML = `
+        <button class="secondary-btn" onclick="closeTeacherModule()">Back to Teacher Learning Path</button>
+        <h2>${toolModule.title}</h2>
+        <p>${renderLessonText(toolModule.lesson)}</p>
+        ${toolModule.extraHtml || ""}
+      `;
+
+      setTimeout(() => {
+        updateStudentBuildCounts();
+        updateStudentToolCheckpointState();
+        setStudentBuildMode("standard");
+      }, 0);
+
+      panel.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     function openModule(index) {
@@ -21674,9 +21715,9 @@ function ecoWordBankChip(word) {
       `;
     }
 
-    function renderEcoAwarenessTool() {
-      const area = document.getElementById("activityArea");
-      const quizArea = document.getElementById("quizArea");
+    function renderEcoAwarenessTool(isTeacher = false) {
+      const area = document.getElementById(isTeacher ? "teacherActivityArea" : "activityArea");
+      const quizArea = document.getElementById(isTeacher ? "teacherQuizArea" : "quizArea");
       if (!area) return;
       if (quizArea) quizArea.classList.add("hidden");
 
@@ -21846,9 +21887,9 @@ function ecoWordBankChip(word) {
           </div>
 
           <div class="button-row">
-            <button type="button" id="ecoRobustCompleteButton" onclick="completeEcoAwarenessModule()">Complete Eco-Awareness Badge</button>
+            <button type="button" id="ecoRobustCompleteButton" onclick="completeEcoAwarenessModule(${isTeacher})">Complete Eco-Awareness Badge</button>
           </div>
-          <div id="quizFeedback" class="feedback hidden"></div>
+          <div id="${isTeacher ? "teacherQuizFeedback" : "quizFeedback"}" class="feedback hidden"></div>
 
           <details class="eco-works-details">
             <summary>Works Cited</summary>
@@ -22473,10 +22514,10 @@ function ecoWordBankChip(word) {
       }
     }
 
-    function completeEcoAwarenessModule() {
+    function completeEcoAwarenessModule(isTeacher = false) {
       updateEcoRobustProgress();
       const progress = getEcoRobustProgress();
-      const feedback = document.getElementById("quizFeedback");
+      const feedback = document.getElementById(isTeacher ? "teacherQuizFeedback" : "quizFeedback");
       if (!feedback) return;
       feedback.classList.remove("hidden");
 
@@ -22493,7 +22534,11 @@ function ecoWordBankChip(word) {
 
       feedback.className = "feedback correct";
       feedback.innerHTML = "Eco-Awareness Badge complete. You completed The Big Picture, used the Water Usage Calculator, finished Real-World Context, and reviewed the four data center types.";
-      completeModule("eco-aware-ai-use", 100);
+      if (isTeacher) {
+        completeTeacherModule("teacher-eco-awareness-badge", 100);
+      } else {
+        completeModule("eco-aware-ai-use", 100);
+      }
     }
 
 
@@ -22911,6 +22956,12 @@ function ecoWordBankChip(word) {
         feedback.className = "feedback correct";
         feedback.innerHTML = "Tool checkpoint complete. You assessed AI use, built a prompt, and generated a disclosure.";
       }
+
+      // On teacher view the tool is a standalone reference (no numbered module),
+      // so do not touch student progress or student module navigation.
+      const teacherView = document.getElementById("teacherView");
+      const teacherActive = teacherView && !teacherView.classList.contains("hidden");
+      if (teacherActive) return;
 
       completeModule("required-ai-practice-tools", 100);
     }
@@ -24692,7 +24743,7 @@ AI disclosure statements are not the same as formal citations. If my teacher req
             feedback: "Correct. Green claims need evidence, scope, and verification."
           }
         ],
-        extraHtml: `
+        extraHtmlDisabledToMatchStudentBadge: `
           <div class="teacher-planner-card">
             <h4>Core teaching points</h4>
             <div class="eco-grid">
@@ -26989,6 +27040,9 @@ AI disclosure statements are not the same as formal citations. If my teacher req
       if (teacherPracticeModules[module.id]) {
         document.getElementById("teacherQuizArea").classList.add("hidden");
         renderPracticeCompletionModule(module.id, true);
+      } else if (module.id === "teacher-eco-awareness-badge") {
+        document.getElementById("teacherQuizArea").classList.add("hidden");
+        renderEcoAwarenessTool(true);
       } else {
         renderTeacherActivity();
       }
