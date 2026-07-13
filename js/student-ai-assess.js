@@ -694,7 +694,15 @@
       const item = module.items[index];
       const card = document.getElementById(`prereqScenario${index}`);
       const feedback = document.getElementById(`prereqScenario${index}Feedback`);
-      const options = item.options || getActivityLabels(module.activityType);
+      // Must match the rendered button order (render uses getBalancedOptionOrder),
+      // otherwise optionIndex maps a label to the wrong button and correct-choice /
+      // wrong-choice highlight the wrong option.
+      const options = getBalancedOptionOrder(
+        (item.options || getActivityLabels(module.activityType)),
+        item.answer,
+        module.id,
+        index
+      );
 
       if (prerequisiteGridSelections[index]) return;
 
