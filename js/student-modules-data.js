@@ -1310,8 +1310,6 @@
                 </div>
               </summary>
               <section class="student-tool-section" id="studentAssessTool">
-                <p class="small-note">Choose the AI-use level before you begin.</p>
-
                 <div class="student-level-buttons" role="group" aria-label="Choose AI use level">
                   <button type="button" class="student-level-btn" data-level="0" onclick="selectStudentAiLevel(0)"><strong>Level 0</strong><span>Independent</span></button>
                   <button type="button" class="student-level-btn" data-level="1" onclick="selectStudentAiLevel(1)"><strong>Level 1</strong><span>Brainstorm / Explain</span></button>
@@ -1375,7 +1373,6 @@
                 </div>
               </summary>
               <section class="student-tool-section student-prompt-practice">
-                <p class="small-note">Create a clearer prompt before you use AI.</p>
                 <p class="small-note">Do not paste a full essay, article, or assignment. Personal info should not be shared with AI.</p>
 
                 <div class="student-build-mode-row" role="group" aria-label="Choose build mode">
@@ -1585,7 +1582,7 @@
                 </div>
               </summary>
               <section class="student-tool-section" id="studentDisclosureTool">
-                <p class="small-note">Explain how AI supported your work. Disclosure is not the same as a formal citation.</p>
+                <p class="small-note">Disclosure is not the same as a formal citation.</p>
 
                 <div class="student-disclosure-example">
                   <strong>Recommended format</strong>

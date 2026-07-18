@@ -1312,42 +1312,42 @@
           title: "Storm video still",
           text: "A dramatic short-video frame shows downtown flooding during severe weather.",
           tag: "video still",
-          image: "https://i.ibb.co.com/5gRVT0TB/download.png",
+          image: "img/1.webp",
           searchTerms: ["downtown", "flooding", "weather", "storm", "city", "date", "official"]
         },
         {
           title: "School delay update",
           text: "A local-style community post shares a winter weather school update.",
           tag: "social post",
-          image: "https://i.ibb.co.com/mVY45MF1/download.png",
+          image: "img/2.webp",
           searchTerms: ["Riverside", "school", "delay", "closure", "January", "official"]
         },
         {
           title: "Science Night flyer",
           text: "A school event poster announces a family science night.",
           tag: "flyer",
-          image: "https://i.ibb.co.com/KjvMXwkv/download.png",
+          image: "img/3.webp",
           searchTerms: ["Riverdale", "Middle", "School", "Science", "Night", "date", "official"]
         },
         {
           title: "Laptop giveaway",
           text: "A promotional-looking post claims free laptops are available for students.",
           tag: "promotion",
-          image: "https://i.ibb.co.com/YTTCCDBB/download.png",
+          image: "img/4.webp",
           searchTerms: ["Community", "Tech", "Access", "Program", "free", "laptops", "students"]
         },
         {
           title: "Weather forecast graphic",
           text: "A polished forecast-style graphic predicts strong spring storms.",
           tag: "graphic",
-          image: "https://i.ibb.co.com/8g1Xx0vJ/download.png",
+          image: "img/5.webp",
           searchTerms: ["severe", "weather", "outlook", "spring", "forecast", "meteorologist", "date"]
         },
         {
           title: "Trail sighting post",
           text: "A social-style post reports a possible mountain lion sighting near local trails.",
           tag: "community post",
-          image: "https://i.ibb.co.com/k20PxLdY/download.png",
+          image: "img/6.webp",
           searchTerms: ["Riverside", "mountain", "lion", "sighting", "trails", "Parks", "Wildlife"]
         }
       ],

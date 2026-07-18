@@ -125,11 +125,25 @@
             visible = visibleSet.has(Number(idxAttr));
           }
         }
-        card.classList.toggle("path-hidden", !visible);
+        setCardHidden(card, !visible);
       });
 
       updateStudentViewNote(searching);
       updateSearchStatus("studentSearchStatus", searching, matchCount, studentSearchQuery);
+    }
+
+    // Hide via class AND inline !important style. Several stylesheet rules force
+    // card display with high-specificity !important (e.g. fixed-height card rules),
+    // so the inline important declaration guarantees hiding wins everywhere.
+    function setCardHidden(card, hidden) {
+      card.classList.toggle("path-hidden", hidden);
+      if (card.style && card.style.setProperty) {
+        if (hidden) {
+          card.style.setProperty("display", "none", "important");
+        } else {
+          card.style.removeProperty("display");
+        }
+      }
     }
 
     // Tell the user when a search is temporarily overriding the chosen view.
@@ -172,7 +186,7 @@
           visible = hay.indexOf(teacherSearchQuery) !== -1;
           if (visible) matchCount++;
         }
-        card.classList.toggle("path-hidden", !visible);
+        setCardHidden(card, !visible);
       });
 
       updateSearchStatus("teacherSearchStatus", searching, matchCount, teacherSearchQuery);

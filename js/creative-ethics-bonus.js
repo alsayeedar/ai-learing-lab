@@ -180,7 +180,7 @@
       {
         prompt: "What makes a creative work feel like yours?",
         choices: [
-          { text: "I noticed something important and made a choice because of it.", scores: { observer: 1 } },
+          { text: "I noticed something important and made a choice.", scores: { observer: 1 } },
           { text: "I gave it a clear purpose and direction.", scores: { director: 1 } },
           { text: "I revised it until it matched my intention.", scores: { shaper: 1 } },
           { text: "I gave it meaning, emotion, or point of view.", scores: { storyteller: 1 } },

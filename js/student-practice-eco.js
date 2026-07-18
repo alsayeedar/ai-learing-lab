@@ -214,7 +214,7 @@ function ecoWordBankChip(word) {
           <div class="eco-animation-grid">
             <div class="eco-animation-card server-heat-card">
               <div class="eco-server-heat-image-wrap">
-                <img src="https://i.ibb.co.com/C3MJzD8P/download.png" alt="Diagram of a data center with Computer Room Air Conditioner, cold aisles, and hot aisles." class="eco-server-heat-image">
+                <img src="img/7.webp" alt="Diagram of a data center with Computer Room Air Conditioner, cold aisles, and hot aisles." class="eco-server-heat-image">
               </div>
             </div>
 

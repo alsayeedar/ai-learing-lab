@@ -1769,7 +1769,9 @@ function generateBigDataReflection() {
         const isExpanded = expandedResource === resource.id;
         const card = document.createElement("article");
         card.className = `module-card resource-card ${isExpanded ? "expanded" : ""}`;
-        card.setAttribute("data-search", `${resource.title} ${resource.description}`);
+        // Index full content (tags stripped) so deep terms inside the resource
+        // are searchable, not just the title/description.
+        card.setAttribute("data-search", `${resource.title} ${resource.description} ${stripTags(resource.content)}`);
 
         card.innerHTML = `
           <div class="resource-card-header" onclick="toggleResourceCard('${resource.id}')">
