@@ -1732,6 +1732,7 @@ function generateBigDataReflection() {
             <p>${module.shortDescription}</p>
             ${completed ? `<p class="module-score">${progress.scores[module.id] === "RESTORED" ? "Restored by checkpoint" : `Score: ${progress.scores[module.id]}%`}</p>` : ""}
           </div>
+          ${renderIdeasButton(module)}
           <button ${unlocked ? "" : "disabled"} onclick="openModule(${index})">${buttonText}</button>
         `;
 
@@ -1782,6 +1783,7 @@ function generateBigDataReflection() {
             </div>
             <span class="resource-expand-indicator" aria-hidden="true">${isExpanded ? "–" : "+"}</span>
           </div>
+          ${renderIdeasButton(resource.id)}
           ${isExpanded ? `<div class="resource-content">${resource.content}</div>` : ""}
         `;
 

@@ -287,6 +287,7 @@
             <p>${module.shortDescription}</p>
             ${completed ? `<p class="module-score">${teacherProgress.scores[module.id] === "RESTORED" ? "Restored by checkpoint" : `Score: ${teacherProgress.scores[module.id]}%`}</p>` : ""}
           </div>
+          ${renderIdeasButton(module)}
           <button ${unlocked ? "" : "disabled"} onclick="openTeacherModule(${index})">${buttonText}</button>
         `;
 
@@ -377,6 +378,7 @@
             </div>
             <span class="resource-expand-indicator" aria-hidden="true">${isExpanded ? "–" : "+"}</span>
           </div>
+          ${renderIdeasButton(resource.id)}
           ${isExpanded ? `<div class="resource-content">${resource.content}</div>` : ""}
         `;
 

@@ -379,6 +379,12 @@
       if (studentView) studentView.classList.toggle("hidden", isTeacher);
       if (teacherView) teacherView.classList.toggle("hidden", !isTeacher);
 
+      // Teacher Suggestions (Ideas buttons) show only in Teacher View.
+      document.body.classList.toggle("app-teacher-view", isTeacher);
+      if (typeof closeTeacherSuggestion === "function" && !isTeacher) {
+        closeTeacherSuggestion();
+      }
+
       if (studentBtn) studentBtn.classList.toggle("active", !isTeacher);
       if (teacherBtn) teacherBtn.classList.toggle("active", isTeacher);
 

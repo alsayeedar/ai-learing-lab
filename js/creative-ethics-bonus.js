@@ -362,7 +362,10 @@
               <strong>Creative Ethics — AI Creator Type</strong>
               <p>${desc}</p>
             </div>
-            <div class="bonus-tile-cta">${renderCreativeEthicsBadge(context)}</div>
+            <div class="bonus-tile-cta">
+              ${typeof renderIdeasButton === "function" ? renderIdeasButton("creativeEthics") : ""}
+              ${renderCreativeEthicsBadge(context)}
+            </div>
           </div>
         </div>`;
     }
