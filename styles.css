@@ -14832,6 +14832,34 @@
     margin: 0.2rem 1rem 0.75rem;
   }
 
+  /* The Ideas button adds a row inside cards that are normally locked to a
+     fixed height. In Teacher View, release the lock: cards grow to fit their
+     full content (no clipped text) and stretch to the tallest card in their
+     grid row so rows stay visually aligned. */
+  body.app-teacher-view #moduleCards > .module-card:not(.resource-card),
+  body.app-teacher-view #teacherModuleCards > .module-card:not(.resource-card) {
+    height: auto !important;
+    min-height: 345px !important;
+    max-height: none !important;
+    align-self: stretch !important;
+  }
+
+  /* Clip long descriptions inside the fixed-height card instead of letting the
+     text paint over the Ideas/action buttons, and keep a visible gap. */
+  #moduleCards > .module-card:not(.resource-card) > div,
+  #teacherModuleCards > .module-card:not(.resource-card) > div {
+    overflow: hidden !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Both buttons carry margin-top:auto from the card rule; pin the action
+     button to a small fixed gap under the Ideas button so the spare space
+     collects above the Ideas button and the pair stays grouped at the bottom. */
+  body.app-teacher-view #moduleCards > .module-card:not(.resource-card) .ideas-btn + button,
+  body.app-teacher-view #teacherModuleCards > .module-card:not(.resource-card) .ideas-btn + button {
+    margin-top: 0.5rem !important;
+  }
+
   .teacher-suggestion-popover {
     position: absolute;
     z-index: 1200;
