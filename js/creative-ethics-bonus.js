@@ -606,16 +606,16 @@
         <p>To earn the Creative Ethics Badge, name one choice you made, one thing you changed or questioned, and one responsibility you had.</p>
         <div class="creator-reflection">
           <label class="creator-reflection-field">
-            <span>One choice I made</span>
-            <input type="text" id="ceReflChoice" data-autofocus oninput="validateCreativeReflection()" autocomplete="off" />
+            <span>One choice I made <span class="creator-reflection-count" id="ceReflChoiceCount">0 / 120</span></span>
+            <input type="text" id="ceReflChoice" maxlength="120" data-autofocus oninput="validateCreativeReflection()" autocomplete="off" />
           </label>
           <label class="creator-reflection-field">
-            <span>One thing I changed or questioned</span>
-            <input type="text" id="ceReflChanged" oninput="validateCreativeReflection()" autocomplete="off" />
+            <span>One thing I changed or questioned <span class="creator-reflection-count" id="ceReflChangedCount">0 / 120</span></span>
+            <input type="text" id="ceReflChanged" maxlength="120" oninput="validateCreativeReflection()" autocomplete="off" />
           </label>
           <label class="creator-reflection-field">
-            <span>One responsibility I had</span>
-            <input type="text" id="ceReflResp" oninput="validateCreativeReflection()" autocomplete="off" />
+            <span>One responsibility I had <span class="creator-reflection-count" id="ceReflRespCount">0 / 120</span></span>
+            <input type="text" id="ceReflResp" maxlength="120" oninput="validateCreativeReflection()" autocomplete="off" />
           </label>
         </div>
         <div class="creator-quiz-actions">
@@ -634,7 +634,18 @@
       return el ? el.value.trim() : "";
     }
 
+    function updateCreativeReflectionCount(inputId) {
+      const input = document.getElementById(inputId);
+      const counter = document.getElementById(inputId + "Count");
+      if (!input || !counter) return;
+      counter.textContent = `${input.value.length} / 120`;
+    }
+
     function validateCreativeReflection() {
+      updateCreativeReflectionCount("ceReflChoice");
+      updateCreativeReflectionCount("ceReflChanged");
+      updateCreativeReflectionCount("ceReflResp");
+
       const btn = document.getElementById("ceReflSubmit");
       if (!btn) return;
       const filled = creativeReflectionValue("ceReflChoice")

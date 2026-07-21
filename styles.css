@@ -14832,6 +14832,14 @@
     margin: 0.2rem 1rem 0.75rem;
   }
 
+  /* Live character counter on the Creative Ethics reflection fields. */
+  .creator-reflection-count {
+    float: right;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+  }
+
   /* The Ideas button adds a row inside cards that are normally locked to a
      fixed height. In Teacher View, release the lock: cards grow to fit their
      full content (no clipped text) and stretch to the tallest card in their
@@ -14858,6 +14866,13 @@
   body.app-teacher-view #moduleCards > .module-card:not(.resource-card) .ideas-btn + button,
   body.app-teacher-view #teacherModuleCards > .module-card:not(.resource-card) .ideas-btn + button {
     margin-top: 0.5rem !important;
+  }
+
+  /* Keep the Ideas button pill-sized (like on resource cards) instead of the
+     full card width the generic card-button rule forces. */
+  body.app-teacher-view #moduleCards > .module-card:not(.resource-card) .ideas-btn,
+  body.app-teacher-view #teacherModuleCards > .module-card:not(.resource-card) .ideas-btn {
+    width: fit-content !important;
   }
 
   .teacher-suggestion-popover {
