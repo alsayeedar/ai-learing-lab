@@ -15013,6 +15013,8 @@
     margin-bottom: 18px;
   }
 
+  .d-inline { display: inline !important; }
+
   .aug-kicker {
     display: inline-block;
     background: #f4f1ff;
@@ -15028,12 +15030,12 @@
   .aug-header h2 {
     margin: 0 0 8px;
     color: #231b68;
-    font-size: clamp(1.9rem, 4vw, 2.7rem);
-    font-weight: 900;
+    font-size: clamp(1.9rem, 4vw, 2.7rem)!important;
+    font-weight: 900!important;
     letter-spacing: -0.03em;
   }
 
-  .aug-header p { margin: 0; max-width: 780px; color: #38324f; font-weight: 600; }
+  .aug-header p { margin: 0; max-width: 780px; color: #38324f; font-weight: 600; font-size: 16px!important; }
 
   .aug-def-card {
     background: #f7fbfb;
@@ -15044,8 +15046,9 @@
     margin: 16px 0 0;
   }
 
-  .aug-def-card h3 { margin: 0 0 8px; color: #004f50; font-size: 1.05rem; }
+  .aug-def-card h3 { margin: 0 0 8px; color: #004f50; font-size: 1.05rem!important; }
   .aug-def-card p { margin: 0; }
+  .aug-quick-card strong { font-size: 16px!important; }
 
   .aug-anchor {
     background: #e7f5f4;
