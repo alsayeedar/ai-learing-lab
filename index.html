@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Learning Lab MVP</title>
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=11" />
 </head>
 
 <body>
@@ -19,7 +19,8 @@
           <button type="button" class="info-btn" onclick="openLabModal('about')">About This Lab</button>
           <button type="button" class="info-btn" onclick="openLabModal('glossary')">Glossary</button>
           <button type="button" class="info-btn" onclick="openLabModal('resources')">Resources</button>
-      <button type="button" class="privacy-pill-btn" onclick="openPrivacyModal()">Privacy</button>
+          <button type="button" class="info-btn" onclick="openAiUseGuide()" aria-haspopup="dialog">AI Use Guide</button>
+          <button type="button" class="privacy-pill-btn" onclick="openPrivacyModal()">Privacy</button>
         </div>
       </div>
 
@@ -35,6 +36,396 @@
       </div>
       <div id="labModalContent" class="lab-modal-content"></div>
     </div>
+  </div>
+
+  <div id="aiUseGuideModal" class="aug-backdrop hidden" role="presentation" onclick="closeAiUseGuideOnBackdrop(event)">
+    <section class="aug-card" role="dialog" aria-modal="true" aria-labelledby="aiUseGuideTitle" aria-describedby="aiUseGuideIntro">
+      <button class="aug-close" type="button" onclick="closeAiUseGuide()" aria-label="Close AI Use Guide">×</button>
+
+      <header class="aug-header">
+        <span class="aug-kicker">SAU 48 AI Guidance</span>
+        <h2 id="aiUseGuideTitle">AI Use Guide</h2>
+        <p id="aiUseGuideIntro">
+          An in-app version of the district AI framework, with student, family, faculty,
+          assignment-use, <span class="aug-term" tabindex="0" data-definition="A clear explanation of how AI was used, including the tool, task, prompts, and how the output affected the final work.">disclosure</span>, and skills-checklist sections.
+        </p>
+        <section class="aug-def-card" aria-label="Artificial Intelligence definition">
+          <h3>Artificial Intelligence (AI)</h3>
+          <p>Digital tools that can generate, analyze, recommend, or solve problems in ways that seem similar to human thinking.</p>
+        </section>
+      </header>
+
+      <section class="aug-anchor" aria-label="Main guide statement">
+        <strong>AI supports learning, but does not replace thinking.</strong>
+        <p>
+          AI may support creativity, organization, problem solving, and learning. Learners remain responsible
+          for privacy, accuracy, academic integrity, disclosure, and final work.
+        </p>
+      </section>
+
+      <section class="aug-quick-grid" aria-label="Quick guide summary">
+        <div class="aug-quick-card"><span>Students</span><strong>Use AI to deepen learning while keeping ownership of your thinking.</strong></div>
+        <div class="aug-quick-card"><span>Families</span><strong>Discuss how AI can help without replacing learning or judgment.</strong></div>
+        <div class="aug-quick-card"><span>Faculty</span><strong>Clarify expectations and <span class="aug-term" tabindex="0" data-definition="The system that finds patterns and responds.">model</span> responsible, transparent use.</strong></div>
+        <div class="aug-quick-card"><span>Teachers</span><strong>Use the printable checklist to see where AI skills are introduced, reinforced, and extended.</strong></div>
+      </section>
+
+      <div class="aug-sections">
+
+        <details class="aug-section" open>
+          <summary>SAU 48 Statement on Artificial Intelligence (AI)</summary>
+          <div class="aug-section-body aug-statement">
+            <p>
+              SAU 48 acknowledges the role of Artificial Intelligence (AI) in enhancing learning,
+              critical thinking, and creativity, while helping to prepare students and our school
+              community for a rapidly changing world increasingly shaped by AI. We see AI as a
+              complement, not a substitute, for human intelligence, fostering original thinking while
+              honoring human ingenuity. Our approach prioritizes ethical, responsible, and transparent
+              use of AI, with a strong commitment to academic integrity, critical evaluation of
+              <span class="aug-term" tabindex="0" data-definition="Responses or content produced by an AI tool, such as text, images, summaries, suggestions, code, audio, or video.">AI outputs</span>,
+              and protection of student data. We guide our community to use AI to enrich, not replace,
+              authentic learning and understanding.
+            </p>
+            <div class="aug-callout">
+              Key idea: AI can support learning, critical thinking, and creativity, but it should not replace
+              human intelligence, original thinking, academic integrity, or authentic learning.
+            </div>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>Academic Integrity and Ethical Use</summary>
+          <div class="aug-section-body">
+            <p>
+              Students are expected to use technology, including AI, honestly and responsibly.
+              AI use should align with school expectations for integrity.
+            </p>
+            <ul>
+              <li>Students should complete their own work unless collaboration or AI support is authorized.</li>
+              <li><span class="aug-term" tabindex="0" data-definition="Content created or shaped by AI.">AI-generated material</span> used in academic work should be identified and verified.</li>
+              <li>Students must distinguish their own thinking from someone else's ideas or <span class="aug-term" tabindex="0" data-definition="Content created or shaped by AI.">AI-generated content</span>.</li>
+              <li>Misleading or harmful digital content, including manipulated media or <span class="aug-term" tabindex="0" data-definition="Altered media that misrepresents a person.">deepfakes</span>, is not responsible use.</li>
+              <li>AI should only be used to generate material when authorized by the teacher.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>Expectations for AI Use</summary>
+          <div class="aug-section-body">
+            <ul>
+              <li>AI may support learning, creativity, organization, and problem solving.</li>
+              <li>AI should not replace original thinking or authentic learning.</li>
+              <li>Learners remain responsible for final work, including AI-supported content.</li>
+              <li>AI tools may generate inaccurate, <span class="aug-term" tabindex="0" data-definition="Unfair or unbalanced patterns in output.">biased</span>, or misleading information.</li>
+              <li>Learners should verify information using reliable sources.</li>
+              <li>Students must follow teacher expectations for each assignment or activity.</li>
+              <li>Students should be ready to explain, discuss, or demonstrate understanding of submitted work.</li>
+              <li>AI tools are not substitutes for trusted adults, teachers, counselors, family members, or healthy human relationships.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>Student Guidelines</summary>
+          <div class="aug-section-body">
+            <p><strong>Student anchor:</strong> AI supports my learning, but does not replace my thinking.</p>
+            <div class="aug-subgrid">
+              <div class="aug-mini-card"><h4>Curious and Self-Directed Learner</h4><ul><li>Approach AI-assisted learning with curiosity, persistence, and independence.</li><li>Use AI to deepen understanding while recognizing productive struggle matters.</li></ul></div>
+              <div class="aug-mini-card"><h4>Responsible Digital Citizen</h4><ul><li>Use AI ethically, safely, and with integrity.</li><li>Understand privacy, bias, academic honesty, and responsible acknowledgment of AI support.</li><li>Understand that AI is not a friend or trusted adult.</li></ul></div>
+              <div class="aug-mini-card"><h4>Critical Thinker and Effective Communicator</h4><ul><li>Critically evaluate AI-generated information.</li><li>Question AI results, analyze sources, and verify accuracy.</li><li>Use technology to support, not replace, human interaction.</li></ul></div>
+              <div class="aug-mini-card"><h4>Creative Problem Solver and Innovator</h4><ul><li>Use AI to generate ideas, explore possibilities, and refine solutions.</li><li>Apply AI knowledge to complex, real-world problems.</li></ul></div>
+              <div class="aug-mini-card"><h4>Strategic and Independent AI User</h4><ul><li>Understand when AI enhances learning and when it hinders learning.</li><li>Use AI intentionally while maintaining ownership of thinking and original work.</li></ul></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>Family Guidelines</summary>
+          <div class="aug-section-body">
+            <p><strong>Family anchor:</strong> Discuss with your student how AI supports learning, but does not replace thinking.</p>
+            <div class="aug-subgrid">
+              <div class="aug-mini-card"><h4>Curiosity and Independence</h4><ul><li>Encourage curiosity, persistence, and independent thinking.</li><li>Remind students that challenge and productive struggle support growth.</li></ul></div>
+              <div class="aug-mini-card"><h4>Safety, Privacy, and Integrity</h4><ul><li>Discuss privacy, bias, academic honesty, and responsible use.</li><li>Help students understand that AI is not a friend or trusted adult.</li></ul></div>
+              <div class="aug-mini-card"><h4>Verification</h4><ul><li>Encourage students to question AI results and verify accuracy.</li><li>Discuss how AI can sound confident even when it is wrong.</li></ul></div>
+              <div class="aug-mini-card"><h4>Ownership</h4><ul><li>Reinforce that AI can support ideas, but students own the final work.</li><li>Ask students what they changed, checked, or decided themselves.</li></ul></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>Faculty Guidelines</summary>
+          <div class="aug-section-body">
+            <p><strong>Faculty anchor:</strong> Embed the philosophy that AI supports learning, but does not replace thinking.</p>
+            <div class="aug-subgrid">
+              <div class="aug-mini-card"><h4>Model Responsible Use</h4><p>Show students what ethical, safe, and transparent AI use looks like in learning.</p></div>
+              <div class="aug-mini-card"><h4>Verify AI Output</h4><p>Teach students to question AI responses, check accuracy, and use reliable sources.</p></div>
+              <div class="aug-mini-card"><h4>Clarify Expectations</h4><p>State when AI is allowed, limited, or not appropriate for each assignment.</p></div>
+              <div class="aug-mini-card"><h4>Protect Student Privacy</h4><p>Avoid entering private student information into AI tools or public systems.</p></div>
+              <div class="aug-mini-card"><h4>Keep Thinking Visible</h4><p>Design tasks where AI may support the process, but student reasoning remains clear.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>AI Levels of Use for Assignments</summary>
+          <div class="aug-section-body">
+            <p>Use levels clarify how AI may be used on a specific assignment and what documentation is expected.</p>
+            <div class="aug-table-wrap">
+              <table class="aug-level-table">
+                <thead><tr><th>Level</th><th>Use</th><th>Description</th><th>Documentation</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>No AI Use</td><td>The assignment is completed entirely without AI assistance.</td><td>No disclosure required; a no-AI pledge may be used.</td></tr>
+                  <tr><td>1</td><td>AI for Planning</td><td>AI may support brainstorming, structure, or idea generation, but no AI content is used in the final submission.</td><td>AI disclosure and chat link may be required.</td></tr>
+                  <tr><td>2</td><td>AI for Editing</td><td>AI may improve clarity or quality of student-created work, but should not create new content.</td><td>AI disclosure and chat link may be required.</td></tr>
+                  <tr><td>3</td><td>AI for Defined Task Support</td><td>AI may complete specific elements defined by the teacher. <span class="aug-term" tabindex="0" data-definition="A person checks and takes responsibility.">Human oversight</span> and evaluation are required.</td><td>AI-created content should be cited; chat links may be required.</td></tr>
+                  <tr><td>4</td><td>AI as Supported Co-Use</td><td>AI may support the assignment more broadly when the teacher allows it. Human creativity, oversight, and evaluation remain necessary.</td><td>AI use should be cited or disclosed; chat links may be required.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>AI Disclosure Statements</summary>
+          <div class="aug-section-body">
+            <p>
+              <span class="aug-term" tabindex="0" data-definition="A note explaining how AI was used.">Disclosure statements</span> help students communicate clearly with teachers about AI use.
+              They work best when the classroom culture values transparency, reflection, and responsible AI use.
+            </p>
+            <ul>
+              <li>Name the AI tool used and include a link when appropriate.</li>
+              <li>Describe the task the tool helped accomplish.</li>
+              <li>List or summarize the specific prompts used.</li>
+              <li>Explain how the output was used in the final submission.</li>
+              <li>Include chat links or prompt history when required.</li>
+            </ul>
+            <div class="aug-callout">
+              Sample pattern: I used [tool] to [specific use]. My prompts included [prompt summary].
+              I used the output to [explain role in final work].
+            </div>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>AI Literacy and UNESCO-Informed Competencies</summary>
+          <div class="aug-section-body">
+            <p>
+              AI literacy develops over time. The framework organizes learning around broad areas
+              rather than treating AI as one isolated tool skill.
+            </p>
+            <div class="aug-subgrid">
+              <div class="aug-mini-card"><h4>AI Basics</h4><p>What is AI?</p></div>
+              <div class="aug-mini-card"><h4>Verification</h4><p>Can I trust AI?</p></div>
+              <div class="aug-mini-card"><h4>Ethics and Rights</h4><p>Is AI ethical?</p></div>
+              <div class="aug-mini-card"><h4>Society and Impact</h4><p>Is AI impactful?</p></div>
+              <div class="aug-mini-card"><h4>Responsible Use</h4><p>When is AI useful?</p></div>
+              <div class="aug-mini-card"><h4>Design and Build</h4><p>How is AI built?</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="aug-section" open>
+          <summary>Printable Teacher AI Skills Checklist</summary>
+          <div class="aug-section-body">
+            <p>
+              This checklist is modeled after the district digital learning mastery organizer format.
+              It tracks where AI literacy skills are introduced, reinforced, extended, or expected to become more independent.
+            </p>
+
+            <div class="aug-checklist-key" aria-label="Checklist key">
+              <span class="aug-key-pill aug-intro">I = Introduce</span>
+              <span class="aug-key-pill aug-reinforce">R = Reinforce</span>
+              <span class="aug-key-pill aug-mastery">M = Mastery / Independent use</span>
+              <span class="aug-key-pill aug-optional">O = Optional / Extension</span>
+            </div>
+
+            <div class="aug-table-wrap">
+              <table class="aug-skills-checklist">
+                <thead>
+                  <tr>
+                    <th>AI Literacy Category</th>
+                    <th>AI-Ready Connection</th>
+                    <th>Skill</th>
+                    <th>K-2</th>
+                    <th>3-5</th>
+                    <th>6-8</th>
+                    <th>9-10</th>
+                    <th>11-12</th>
+                    <th>Related Modules / Resources</th>
+                    <th>Ideas: Ask / Try</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="aug-category">AI Basics</td>
+                    <td>Curious and Self-Directed Learner</td>
+                    <td>Explain what AI is and is not, including that AI uses patterns, data, rules, or models to respond.</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>What Counts as AI; How AI Generates Responses; Patterns, Not Magic</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> What is the difference between a tool following patterns and a person understanding something?<br><strong>Try:</strong> Ask students to explain one AI idea using a simple example.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Verification</td>
+                    <td>Critical Thinker and Effective Communicator</td>
+                    <td>Question AI output, analyze sources, and verify accuracy before using information.</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>Can You Trust It?; Is This Media Reliable?; AI Claim Checker</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> What makes an answer sound trustworthy, and what makes it actually trustworthy?<br><strong>Try:</strong> Ask students to check one AI-generated claim against a reliable source.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Ethics and Rights</td>
+                    <td>Responsible Digital Citizen</td>
+                    <td>Use AI safely, ethically, and with integrity while protecting privacy and respecting people.</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>Student AI Guidelines; Privacy, PII, and Context; Family Guidelines</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> What information should not be entered into an AI tool?<br><strong>Try:</strong> Draft a class privacy rule for AI-supported work.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Academic Integrity</td>
+                    <td>Responsible Digital Citizen</td>
+                    <td>Distinguish support from substitution and maintain ownership of original thinking and final work.</td>
+                    <td class="aug-grade-cell aug-optional">O</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>SAU 48 AI Statement and Academic Integrity; When Is AI Allowed?</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> What is the difference between support and substitution?<br><strong>Try:</strong> Label sample AI-use scenarios as support, shortcut, or academic integrity concern.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Disclosure</td>
+                    <td>Critical Thinker and Effective Communicator</td>
+                    <td>Explain when and how AI was used, including the tool, prompt, purpose, and human role.</td>
+                    <td class="aug-grade-cell aug-optional">O</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>AI Disclosure Statements; Disclosure Builder; Teacher AI Disclosure Note</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> Why is 'I used AI' usually not specific enough?<br><strong>Try:</strong> Write a disclosure stem that names the tool, purpose, prompt, and student role.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Responsible Use</td>
+                    <td>Strategic and Independent AI User</td>
+                    <td>Decide when AI is useful, limited, not allowed, or not appropriate for the learning goal.</td>
+                    <td class="aug-grade-cell aug-optional">O</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>Responsible School Use; AI Levels of Use; AI Use Planner</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> When does AI help learning, and when does it get in the way?<br><strong>Try:</strong> Choose an AI-use level for one assignment and add it to the directions.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Prompting</td>
+                    <td>Strategic and Independent AI User</td>
+                    <td>Write prompts that support learning, feedback, organization, or revision without replacing thinking.</td>
+                    <td class="aug-grade-cell aug-optional">O</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>Prompt Like a Learner; Prompt Builder; Prompting for Learning</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> What makes a prompt support learning instead of doing the work?<br><strong>Try:</strong> Revise a weak prompt so it asks for feedback, questions, or coaching.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Follow-Up and Reflection</td>
+                    <td>Curious and Self-Directed Learner</td>
+                    <td>Ask follow-up questions, revise AI-supported work, and explain choices made during the process.</td>
+                    <td class="aug-grade-cell aug-optional">O</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>Student Follow-Up Prompt Routine; AI Follow-Up Routine; Student Self-Assessment</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> Why is the first AI answer usually not the end of thinking?<br><strong>Try:</strong> Write one follow-up prompt that asks AI to clarify, check, or improve its response.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Society and Impact</td>
+                    <td>Responsible Digital Citizen</td>
+                    <td>Explain that AI affects people, communities, work, opportunity, fairness, and the environment.</td>
+                    <td class="aug-grade-cell aug-optional">O</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>AI Eco-Awareness Badge; Equity, Access, and Developmental Fit</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> Who benefits from this AI use, and who could be affected or left out?<br><strong>Try:</strong> Identify one possible impact of AI beyond the screen.</td>
+                  </tr>
+                  <tr>
+                    <td class="aug-category">Design and Build</td>
+                    <td>Creative Problem Solver and Innovator</td>
+                    <td>Describe or model how AI systems classify, predict, respond, improve, or fail.</td>
+                    <td class="aug-grade-cell aug-optional">O</td>
+                    <td class="aug-grade-cell aug-intro">I</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-reinforce">R</td>
+                    <td class="aug-grade-cell aug-mastery">M</td>
+                    <td>Patterns, Not Magic; How AI Generates Responses; AI, Creativity, and Ethics</td>
+                    <td class="aug-ideas-cell"><strong>Ask:</strong> How can a system make a prediction without truly understanding?<br><strong>Try:</strong> Model a simple classify, predict, or respond activity.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="aug-callout">
+              This checklist tracks skills taught by the curriculum. It is not individual student mastery tracking.
+            </div>
+          </div>
+        </details>
+
+        <details class="aug-section">
+          <summary>Definitions</summary>
+          <div class="aug-section-body">
+            <ul>
+              <li><strong>Artificial Intelligence:</strong> digital systems that perform tasks associated with human thinking, such as generating, analyzing, or solving problems.</li>
+              <li><strong>Generative AI:</strong> AI that creates new text, images, audio, video, code, or other media from prompts.</li>
+              <li><strong>AI Hallucination:</strong> inaccurate, misleading, fabricated, or false information that may appear convincing.</li>
+              <li><strong>Deepfake:</strong> digitally altered media that falsely represents what a person said, did, or looked like.</li>
+              <li><strong>Digital Citizenship:</strong> responsible, safe, ethical, and respectful use of technology and online resources.</li>
+              <li><strong>Prompt:</strong> a question, instruction, or request entered into an AI system.</li>
+              <li><strong>Bias:</strong> unfair, inaccurate, or unbalanced information that may appear in AI output or digital content.</li>
+            </ul>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="aug-actions">
+        <button class="aug-action-btn primary" type="button" onclick="printAiUseGuide()">Print Guide</button>
+        <button class="aug-action-btn" type="button" onclick="printAiUseGuideChecklist()">Print Skills Checklist</button>
+        <button class="aug-action-btn" type="button" onclick="openAiFramework()">Open Full Framework</button>
+        <button class="aug-action-btn" type="button" onclick="closeAiUseGuide()">Close</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="aiFrameworkModal" class="aug-backdrop hidden" role="presentation" onclick="closeAiFrameworkOnBackdrop(event)">
+    <section class="aug-card aug-card-framework" role="dialog" aria-modal="true" aria-label="SAU 48 AI Usage Framework document">
+      <div class="aug-framework-head">
+        <strong>SAU 48 AI Usage Framework</strong>
+        <div class="aug-framework-head-actions">
+          <a class="aug-action-btn" href="pdf/SAU_48_AI_Usage_Framework.pdf" target="_blank" rel="noopener">Open in New Tab</a>
+          <button class="aug-close aug-close-inline" type="button" onclick="closeAiFramework()" aria-label="Close framework document">×</button>
+        </div>
+      </div>
+      <div class="aug-framework-body">
+        <iframe id="aiFrameworkFrame" class="aug-framework-frame" title="SAU 48 AI Usage Framework PDF" src="about:blank"></iframe>
+      </div>
+    </section>
   </div>
 
 
@@ -217,20 +608,21 @@
   
 
 
-  <script src="js/00-core-helpers.js?v=9"></script>
-  <script src="js/student-modules-data.js?v=9"></script>
-  <script src="js/strands-foundations.js?v=9"></script>
-  <script src="js/progress-checkpoints.js?v=9"></script>
-  <script src="js/student-tools.js?v=9"></script>
-  <script src="js/student-practice-core.js?v=9"></script>
-  <script src="js/student-practice-eco.js?v=9"></script>
-  <script src="js/student-ai-assess.js?v=9"></script>
-  <script src="js/teacher-modules-data.js?v=9"></script>
-  <script src="js/teacher-tools.js?v=9"></script>
-  <script src="js/teacher-progress.js?v=9"></script>
-  <script src="js/path-controls.js?v=9"></script>
-  <script src="js/teacher-suggestions.js?v=9"></script>
-  <script src="js/creative-ethics-bonus.js?v=9"></script>
-  <script src="js/lab-modal-bootstrap.js?v=9"></script>
+  <script src="js/00-core-helpers.js?v=11"></script>
+  <script src="js/student-modules-data.js?v=11"></script>
+  <script src="js/strands-foundations.js?v=11"></script>
+  <script src="js/progress-checkpoints.js?v=11"></script>
+  <script src="js/student-tools.js?v=11"></script>
+  <script src="js/student-practice-core.js?v=11"></script>
+  <script src="js/student-practice-eco.js?v=11"></script>
+  <script src="js/student-ai-assess.js?v=11"></script>
+  <script src="js/teacher-modules-data.js?v=11"></script>
+  <script src="js/teacher-tools.js?v=11"></script>
+  <script src="js/teacher-progress.js?v=11"></script>
+  <script src="js/path-controls.js?v=11"></script>
+  <script src="js/teacher-suggestions.js?v=11"></script>
+  <script src="js/creative-ethics-bonus.js?v=11"></script>
+  <script src="js/ai-use-guide.js?v=11"></script>
+  <script src="js/lab-modal-bootstrap.js?v=11"></script>
 </body>
 </html>
