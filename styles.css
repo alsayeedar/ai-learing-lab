@@ -15369,8 +15369,53 @@
 
     body.aug-printing details.aug-section summary { list-style: none; background: #eee; }
     body.aug-printing .aug-table-wrap { overflow: visible; }
+
+    /* Landscape gives the wide checklist room; scoped to the guide via a named
+       page so certificate printing keeps its own orientation. */
+    body.aug-printing .aug-card { page: augLandscape; }
+    @page augLandscape { size: landscape; margin: 0.4in; }
+
+    /* Fixed layout forces all columns to share the page width and wrap text,
+       instead of holding their on-screen min-widths and clipping off-page. */
     body.aug-printing .aug-skills-checklist,
-    body.aug-printing .aug-level-table { min-width: 0; font-size: 0.72rem; }
+    body.aug-printing .aug-level-table {
+      min-width: 0;
+      width: 100%;
+      table-layout: fixed;
+      font-size: 0.62rem;
+    }
+
+    body.aug-printing .aug-skills-checklist th,
+    body.aug-printing .aug-skills-checklist td,
+    body.aug-printing .aug-level-table th,
+    body.aug-printing .aug-level-table td {
+      padding: 4px;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+    }
+
+    /* Reset the on-screen cell min-widths so fixed layout can compress them. */
+    body.aug-printing .aug-skills-checklist .aug-category,
+    body.aug-printing .aug-skills-checklist .aug-grade-cell,
+    body.aug-printing .aug-ideas-cell { min-width: 0; }
+
+    /* Narrow the five single-letter grade columns so wide text columns keep room. */
+    body.aug-printing .aug-skills-checklist .aug-grade-cell { width: 3.2%; }
+
+    /* Avoid splitting a checklist row across pages. */
+    body.aug-printing .aug-skills-checklist tr,
+    body.aug-printing .aug-level-table tr { break-inside: avoid; }
+
+    /* Repeat the header row on each printed page. */
+    body.aug-printing .aug-skills-checklist thead,
+    body.aug-printing .aug-level-table thead { display: table-header-group; }
+
+    /* Strip trailing space so content doesn't spill onto an extra blank page. */
+    body.aug-printing .aug-card { padding-bottom: 0; margin-bottom: 0; }
+    body.aug-printing .aug-sections { margin-bottom: 0; }
+    body.aug-printing .aug-sections > details.aug-section:last-child { margin-bottom: 0; }
+    body.aug-printing #aiUseGuideModal.aug-backdrop { margin-bottom: 0; padding-bottom: 0; }
 
     /* Checklist-only print: keep just the checklist section + its context. */
     body.aug-print-checklist .aug-anchor,
