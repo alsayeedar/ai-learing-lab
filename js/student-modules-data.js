@@ -493,6 +493,7 @@
         title: "Student AI Guidelines",
         shortDescription: "Practice the core expectations for responsible student AI use.",
         lesson: "AI can support learning, but it should not replace student thinking. Work through these short situations and choose the guideline that fits best.",
+        extraHtml: BOUNDARY_SORT_REFLECTION_HTML,
         activityType: "guidelinePractice",
         items: [
           {
@@ -1364,6 +1365,8 @@
                 <div id="studentAssessStatus" class="student-prompt-status">Assess your AI-use level before building a prompt.</div>
               </section>
             </details>
+
+            ${BOUNDARY_START_CHAT_HTML}
 
             <details class="student-tool-accordion">
               <summary>

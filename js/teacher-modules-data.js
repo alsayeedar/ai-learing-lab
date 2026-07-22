@@ -4,6 +4,7 @@
         title: "Faculty AI Guidelines",
         shortDescription: "Apply the faculty guidance: AI supports learning, but does not replace thinking.",
         lesson: "Faculty help embed the philosophy that AI supports learning, but does not replace thinking. Teachers model and teach responsible AI use, set clear expectations, protect student data, reinforce academic integrity, and decide when AI use fits the instructional goal, developmental level, assignment type, and individual student needs.",
+        extraHtml: BOUNDARY_SORT_REFLECTION_HTML,
         activityType: "teacherScenario",
         items: [
           {

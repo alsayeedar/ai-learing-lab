@@ -15423,3 +15423,470 @@
     body.aug-print-checklist .aug-def-card,
     body.aug-print-checklist details.aug-section:not([open]) { display: none !important; }
   }
+
+/* =========================================================
+   AI Boundary Badge (scoped under .boundary-block)
+   Ported from ai_boundary_badge_final_lexend.html mockup.
+   All selectors are wrapped so the mockup's generic class
+   names (.btn, .step-card, .prompt-box, textarea, etc.) do
+   not bleed into or inherit from the rest of the app.
+   ========================================================= */
+
+.boundary-block { color: #1f1f29; }
+
+.boundary-block .boundary-main-idea {
+  margin: 0 0 14px;
+  color: #2f2a45;
+  font-weight: 700;
+}
+
+.boundary-block .boundary-research-note {
+  background: #ffffff;
+  border: 2px solid #b9dcda;
+  border-left: 8px solid #004f50;
+  border-radius: 20px;
+  padding: 18px;
+  margin: 0 0 16px;
+}
+
+.boundary-block .boundary-research-note h4 {
+  margin: 0 0 8px;
+  color: #004f50;
+  font-size: 1rem;
+}
+
+.boundary-block .boundary-research-note p { margin: 0; }
+
+.boundary-block .research-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+  margin: 0 0 16px;
+}
+
+.boundary-block .vocab-card {
+  background: #ffffff;
+  border: 2px solid #dcd6f1;
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100%;
+  box-shadow: 0 4px 12px rgba(35, 27, 104, 0.05);
+}
+
+.boundary-block .vocab-header {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #efebfb;
+}
+
+.boundary-block .vocab-header h5 {
+  margin: 0;
+  color: #004f50;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.boundary-block .pronunciation-line {
+  margin-top: 4px;
+  color: #231b68;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.boundary-block .vocab-body {
+  color: #3b3752;
+  font-weight: 600;
+  padding: 0;
+  border-top: 0;
+  font-size: 16px;
+}
+
+.boundary-block .root-hover-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.boundary-block .root-hover {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 2px solid #d7d0ef;
+  background: #faf9fe;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  color: #4a4466;
+  font-weight: 800;
+  cursor: default;
+}
+
+.boundary-block .root-hover .hover-def {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%);
+  min-width: 170px;
+  max-width: 220px;
+  background: #2d275e;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-size: 0.77rem;
+  line-height: 1.35;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 20;
+  text-align: left;
+}
+
+.boundary-block .root-hover .hover-def::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 7px;
+  border-style: solid;
+  border-color: #2d275e transparent transparent transparent;
+}
+
+.boundary-block .root-hover:hover .hover-def,
+.boundary-block .root-hover:focus-visible .hover-def {
+  opacity: 1;
+  visibility: visible;
+}
+
+.boundary-block .step-card {
+  background: #ffffff;
+  border: 2px solid #c7dfdd;
+  border-radius: 20px;
+  padding: 18px;
+  margin-top: 14px;
+}
+
+.boundary-block .step-card h4 {
+  margin: 0 0 8px;
+  color: #004f50;
+  font-size: 1.05rem;
+}
+
+.boundary-block .step-card p { margin: 0 0 12px; }
+
+.boundary-block .boundary-type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.boundary-block .boundary-type-card {
+  border: 2px solid #d8d2f0;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 15px;
+  text-align: left;
+  cursor: pointer;
+  color: #1f1f29;
+  min-height: 150px;
+}
+
+.boundary-block .boundary-type-card:hover,
+.boundary-block .boundary-type-card.selected {
+  border-color: #004f50;
+  background: #e7f5f4;
+}
+
+.boundary-block .boundary-type-card h5 {
+  margin: 0 0 6px;
+  color: #231b68;
+  font-size: 0.98rem!important;
+  font-weight: 900;
+}
+
+.boundary-block .boundary-type-card .best-for {
+  margin: 0 0 8px;
+  color: #004f50;
+  font-weight: 900;
+  font-size: 0.85rem!important;
+}
+
+.boundary-block .boundary-type-card p {
+  margin: 0;
+  color: #494363;
+  font-size: 0.9rem!important;
+  font-weight: 600;
+}
+
+.boundary-block .boundary-note {
+  background: #fff8e6;
+  border: 2px solid #e7d177;
+  border-left: 8px solid #c49b24;
+  border-radius: 18px;
+  padding: 13px 15px;
+  margin: 14px 0;
+  font-weight: 700;
+  color: #443817;
+  font-size: 16px!important;
+}
+
+.boundary-block .prompt-box {
+  background: #fff5cf;
+  border: 2px solid #e7d177;
+  border-radius: 18px;
+  padding: 16px;
+  font-weight: 700;
+  margin-top: 10px;
+  white-space: pre-wrap;
+  font-size: 16px!important;
+}
+
+.boundary-block .mini-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.boundary-block .btn {
+  border: 2px solid #332b83;
+  background: #ffffff;
+  color: #231b68;
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 9px 15px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.boundary-block .btn.primary {
+  background: #332b83;
+  color: #ffffff;
+}
+
+.boundary-block .btn:hover { background: #f4f1ff; color: #231b68; }
+.boundary-block .btn.primary:hover { background: #231b68; }
+
+.boundary-block .pair-list {
+  display: grid;
+  gap: 14px;
+}
+
+.boundary-block .pair-row {
+  border: 2px solid #dfdbef;
+  border-radius: 20px;
+  background: #fcfbff;
+  padding: 14px;
+}
+
+.boundary-block .scenario-head {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #ece8fb;
+}
+
+.boundary-block .scenario-title {
+  margin: 0 0 4px;
+  color: #231b68;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.boundary-block .scenario-text {
+  margin: 0;
+  color: #5b5670;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.boundary-block .single-sort-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.boundary-block .response-card {
+  border: 2px solid #d8d2f0;
+  border-radius: 18px;
+  padding: 14px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.boundary-block .response-card blockquote {
+  margin: 0;
+  color: #1f1f29;
+  font-weight: 700;
+  font-size: 0.97rem;
+}
+
+.boundary-block .response-card .sort-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.boundary-block .sort-btn {
+  border: 2px solid #c9c1eb;
+  background: #ffffff;
+  color: #231b68;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 0.84rem!important;
+  min-height: unset;
+}
+
+.boundary-block .sort-btn.boundary:hover { background: #fff0ef; color: #231b68; }
+.boundary-block .sort-btn.keep:hover { background: #edf8ef; color: #231b68; }
+
+.boundary-block .response-card.sorted-boundary {
+  border-color: #e5b5aa;
+  background: #fff8f7;
+}
+
+.boundary-block .response-card.sorted-keep {
+  border-color: #b8dfb8;
+  background: #f7fcf7;
+}
+
+.boundary-block .sort-status {
+  display: none;
+  margin-top: 10px;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.88rem;
+  border: 2px solid;
+  font-weight: 700;
+}
+
+.boundary-block .sort-status.show { display: block; }
+
+.boundary-block .sort-status.correct-boundary {
+  background: #fff0ef;
+  border-color: #e5b5aa;
+  color: #7a3a20;
+}
+
+.boundary-block .sort-status.correct-keep {
+  background: #edf8ef;
+  border-color: #b8dfb8;
+  color: #2f6f3a;
+}
+
+.boundary-block .sort-status.incorrect {
+  background: #fff8e6;
+  border-color: #e7d177;
+  color: #6c5512;
+}
+
+.boundary-block .paired-reveal {
+  display: none;
+  margin-top: 12px;
+  border-radius: 18px;
+  border: 2px solid #d8d2f0;
+  background: #ffffff;
+  padding: 14px;
+}
+
+.boundary-block .paired-reveal.show { display: block; }
+
+.boundary-block .paired-reveal.boundary {
+  background: #fff8f7;
+  border-color: #e5b5aa;
+}
+
+.boundary-block .paired-reveal.keep {
+  background: #f7fcf7;
+  border-color: #b8dfb8;
+}
+
+.boundary-block .paired-reveal h5 {
+  margin: 0 0 8px;
+  color: #231b68;
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.boundary-block .paired-reveal blockquote {
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.boundary-block .response-note {
+  margin: 0;
+  color: #3b3752;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.boundary-block .midchat-boundary {
+  margin-top: 10px;
+  background: #fff5cf;
+  border: 2px solid #e7d177;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.88rem;
+  color: #403414;
+  font-weight: 800;
+}
+
+.boundary-block .midchat-boundary strong { color: #231b68; }
+
+.boundary-block .boundary-reflection-label {
+  display: block;
+  margin: 4px 0 8px;
+}
+
+.boundary-block textarea.boundary-reflection {
+  width: 100%;
+  border: 2px solid #cfc9e8;
+  border-radius: 14px;
+  padding: 11px 12px;
+  font-size: 0.95rem;
+  background: #ffffff;
+  color: #1f1f29;
+  min-height: 92px;
+  resize: vertical;
+}
+
+.boundary-block .badge-earned {
+  display: none;
+  background: #f0faef;
+  border: 3px solid #5f9f5f;
+  border-radius: 22px;
+  padding: 18px;
+  margin-top: 16px;
+}
+
+.boundary-block .badge-earned.is-visible { display: block; }
+
+.boundary-block .badge-earned strong {
+  color: #245f24;
+  font-size: 1.1rem;
+}
+
+.boundary-block button:focus-visible,
+.boundary-block textarea:focus-visible {
+  outline: 4px solid #ffcf33;
+  outline-offset: 3px;
+}
+
+@media (max-width: 860px) {
+  .boundary-block .research-grid,
+  .boundary-block .boundary-type-grid {
+    grid-template-columns: 1fr;
+  }
+}
