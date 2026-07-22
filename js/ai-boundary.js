@@ -233,7 +233,7 @@ const BOUNDARY_SORT_REFLECTION_HTML = `
               <div class="pair-list">
                 <div class="pair-row">
                   <div class="scenario-head">
-                    <p class="scenario-title">2.1 The “Genius” Math Failure</p>
+                    <p class="scenario-title">1 The “Genius” Math Failure</p>
                     <p class="scenario-text">A student solves 3/4 + 2/3 by adding across to get 5/7 and asks, “Did I do this right?”</p>
                   </div>
                   <div class="single-sort-grid">
@@ -255,7 +255,7 @@ const BOUNDARY_SORT_REFLECTION_HTML = `
 
                 <div class="pair-row">
                   <div class="scenario-head">
-                    <p class="scenario-title">2.2 Praising Plagiarism</p>
+                    <p class="scenario-title">2 Praising Plagiarism</p>
                     <p class="scenario-text">A student pastes a Wikipedia paragraph about photosynthesis, changes two words, and asks, “How is my original summary?”</p>
                   </div>
                   <div class="single-sort-grid">
@@ -278,7 +278,7 @@ const BOUNDARY_SORT_REFLECTION_HTML = `
 
                 <div class="pair-row">
                   <div class="scenario-head">
-                    <p class="scenario-title">2.3 Backpedaling on Basic Facts</p>
+                    <p class="scenario-title">3 Backpedaling on Basic Facts</p>
                     <p class="scenario-text">A student asks, “Is a dolphin a mammal or a fish?” The AI says “mammal.” The student replies, “No, it lives in the ocean so it’s a fish.”</p>
                   </div>
                   <div class="single-sort-grid">
@@ -300,7 +300,7 @@ const BOUNDARY_SORT_REFLECTION_HTML = `
 
                 <div class="pair-row">
                   <div class="scenario-head">
-                    <p class="scenario-title">2.4 Over-Praising a Flawed Thesis</p>
+                    <p class="scenario-title">4 Over-Praising a Flawed Thesis</p>
                     <p class="scenario-text">An English student writes: “In ‘To Kill a Mockingbird’, Atticus Finch is a bad guy because he talks too slow.”</p>
                   </div>
                   <div class="single-sort-grid">
@@ -323,7 +323,7 @@ const BOUNDARY_SORT_REFLECTION_HTML = `
 
                 <div class="pair-row">
                   <div class="scenario-head">
-                    <p class="scenario-title">2.5 Validating Classroom Drama</p>
+                    <p class="scenario-title">5 Validating Classroom Drama</p>
                     <p class="scenario-text">A student asks, “My group partner won’t do their share of the slides, so I removed them from the Google Slides sharing settings so they get an F. Did I handle this right?”</p>
                   </div>
                   <div class="single-sort-grid">
@@ -345,7 +345,7 @@ const BOUNDARY_SORT_REFLECTION_HTML = `
 
                 <div class="pair-row">
                   <div class="scenario-head">
-                    <p class="scenario-title">2.6 The “Masterpiece” Essay Critique</p>
+                    <p class="scenario-title">6 The “Masterpiece” Essay Critique</p>
                     <p class="scenario-text">A student writes a three-sentence essay with no punctuation and asks, “Is this ready to turn in?”</p>
                   </div>
                   <div class="single-sort-grid">
@@ -368,7 +368,7 @@ const BOUNDARY_SORT_REFLECTION_HTML = `
 
                 <div class="pair-row">
                   <div class="scenario-head">
-                    <p class="scenario-title">2.7 Encouraging an Unsound Science Experiment</p>
+                    <p class="scenario-title">7 Encouraging an Unsound Science Experiment</p>
                     <p class="scenario-text">A student says, “I want to test if plant growth speeds up when you water them with energy drinks instead of water.”</p>
                   </div>
                   <div class="single-sort-grid">
@@ -390,7 +390,7 @@ const BOUNDARY_SORT_REFLECTION_HTML = `
 
                 <div class="pair-row">
                   <div class="scenario-head">
-                    <p class="scenario-title">2.8 Faking Historical Facts to Match the Prompt</p>
+                    <p class="scenario-title">8 Faking Historical Facts to Match the Prompt</p>
                     <p class="scenario-text">A student asks, “Help me outline an essay on how George Washington won the Civil War.”</p>
                   </div>
                   <div class="single-sort-grid">
